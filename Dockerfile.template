@@ -13,9 +13,9 @@ RUN apt-get update && apt-get install -yq wget nano lsb-release && \
 
 #COPY package.json package.json
 
-#RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf /tmp/*
+RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf /tmp/*
 
-ADD content/ /
+COPY content/ /
 #COPY package.json ./
 #COPY server.js ./
 #COPY . ./
@@ -26,3 +26,4 @@ ENV INITSYSTEM on
 # server.js will run when container starts up on the device
 #CMD ["npm", "start"]
 
+CMD "start"
