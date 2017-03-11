@@ -13,6 +13,8 @@ COPY content/ /
 
 RUN echo "$MASTER_IP $MASTER_HOST" >>/etc/hosts
 
+
+
 ENV INITSYSTEM on
 
 CMD "bash"
