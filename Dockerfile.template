@@ -16,8 +16,8 @@ RUN apt-get update && apt-get install -yq wget nano lsb-release && \
 #RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf /tmp/*
 
 ADD content/ /
-COPY package.json ./
-COPY server.js ./
+#COPY package.json ./
+#COPY server.js ./
 #COPY . ./
 
 # Enable systemd init system in container
