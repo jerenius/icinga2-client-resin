@@ -9,21 +9,10 @@ RUN apt-get update && apt-get install -yq wget nano lsb-release && \
     apt-get install -y icinga2 monitoring-plugins monitoring-plugins-basic monitoring-plugins-common monitoring-plugins-standard && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-#WORKDIR /usr/src/app
-
-#COPY package.json package.json
-
-#RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf /tmp/*
-
 COPY content/ /
-#COPY package.json ./
-#COPY server.js ./
-#COPY . ./
 
-# Enable systemd init system in container
+RUN echo "$MASTER_IP $MASTER_HOST" >>/etc/hosts
+
 ENV INITSYSTEM on
-
-# server.js will run when container starts up on the device
-#CMD ["npm", "start"]
 
 CMD "bash"
