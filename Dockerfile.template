@@ -1,4 +1,6 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
+#FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
+FROM resin/rpi-raspbian:jessie
+
 
 MAINTAINER Jere Virta
 
