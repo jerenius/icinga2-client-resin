@@ -2,23 +2,18 @@ FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
 
 MAINTAINER Jere Virta
 
-RUN apt-get update && apt-get install -yq wget nano lsb-release 
+RUN apt-get update && apt-get install -yq wget nano lsb-release && \
+    wget -O - http://packages.icinga.com/icinga.key | apt-key add - \
+    echo "deb http://packages.icinga.com/debian icinga-jessie main" >>/etc/apt/sources.list \
+    echo "deb http://ftp.debian.org/debian jessie-backports main" >>/etc/apt/sources.list \
+    apt-get install -y icinga2 monitoring-plugins monitoring-plugins-basic monitoring-plugins-common monitoring-plugins-standard \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN wget -O - http://packages.icinga.com/icinga.key | apt-key add - 
+#WORKDIR /usr/src/app
 
-RUN echo "deb http://packages.icinga.com/debian icinga-jessie main" >>/etc/apt/sources.list
+#COPY package.json package.json
 
-RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >>/etc/apt/sources.list
-
-RUN apt-get install -y icinga2 monitoring-plugins monitoring-plugins-basic monitoring-plugins-common monitoring-plugins-standard
-
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /usr/src/app
-
-COPY package.json package.json
-
-RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf /tmp/*
+#RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf /tmp/*
 
 ADD content/ /
 COPY package.json ./
