@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -yq wget nano lsb-release && \
 
 #COPY package.json package.json
 
-RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf /tmp/*
+#RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf /tmp/*
 
 COPY content/ /
 #COPY package.json ./
