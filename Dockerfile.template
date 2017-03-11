@@ -11,6 +11,8 @@ RUN echo "deb http://packages.icinga.com/debian icinga-jessie main" >>/etc/apt/s
 
 RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >>/etc/apt/sources.list
 
+RUN apt-get install icinga2
+
 # Defines our working directory in container
 WORKDIR /usr/src/app
 
@@ -22,6 +24,9 @@ COPY package.json package.json
 RUN JOBS=MAX npm install --production --unsafe-perm && npm cache clean && rm -rf /tmp/*
 
 # This will copy all files in our root to the working  directory in the container
+
+COPY ca.crt /etc/icinga2/pki
+
 COPY . ./
 
 # Enable systemd init system in container
