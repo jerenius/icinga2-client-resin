@@ -21,13 +21,7 @@ sed -i "const NodeName = \"localhost\"/const NodeName = \"$CLIENT_HOST\"" /etc/i
 
 icinga2 pki new-cert --cn $CLIENT_HOST --key $pki_dir/$CLIENT_HOST.key --cert $pki_dir/$CLIENT_HOST.crt
 icinga2 pki save-cert --key $pki_dir/$CLIENT_HOST.key --cert $pki_dir/$CLIENT_HOST.crt --trustedcert $pki_dir/trusted-cert.crt --host $MASTER_HOST
-icinga2 node setup --ticket $ICINGA_TICKET \
-  --zone $CLIENT_HOST \
-  --master_host $MASTER_HOST \
-  --trustedcert  $pki_dir/trusted-cert.crt \
-  --cn $CLIENT_HOST \
-  --endpoint $CLIENT_HOST \
--accept-commands --accept-config
+icinga2 node setup --ticket $ICINGA_TICKET --zone $CLIENT_HOST --master_host $MASTER_HOST  --trustedcert  $pki_dir/trusted-cert.crt  --cn $CLIENT_HOST  --endpoint $MASTER_HOST --accept-commands --accept-config
 
 
 sed -i '$ i object Zone "global-templates" { global = true }' /etc/icinga2/zones.conf
