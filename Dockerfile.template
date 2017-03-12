@@ -1,6 +1,6 @@
 #FROM resin/%%RESIN_MACHINE_NAME%%-node:slim
-FROM resin/rpi-raspbian:jessie
-
+#FROM resin/rpi-raspbian:jessie
+FROM debian:jessie
 
 MAINTAINER Jere Virta
 
