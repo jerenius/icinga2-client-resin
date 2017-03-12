@@ -17,12 +17,8 @@ COPY content/ /
 COPY start.sh /
 RUN chmod +x /start.sh
 
-
 ENV INITSYSTEM on
 
 RUN echo "$MASTER_IP $MASTER_HOST" >>/etc/hosts
-
-RUN echo %%RESIN_APP_NAME%% >>/etc/foo
-RUN echo %%MASTER_HOST%% >>/etc/foo
 
 CMD "/start.sh"
