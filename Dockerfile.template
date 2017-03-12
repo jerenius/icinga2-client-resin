@@ -5,12 +5,13 @@ FROM resin/rpi-raspbian:jessie
 MAINTAINER Jere Virta
 
 RUN apt-get update && apt-get install -yq wget nano lsb-release curl apt-utils debian-keyring && \
+     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     wget -O - http://packages.icinga.com/icinga.key | apt-key add - && \
     gpg --keyserver pgpkeys.mit.edu --recv-key  010908312D230C5F && gpg -a --export 010908312D230C5F | sudo apt-key add - && \
     echo "deb http://packages.icinga.com/debian icinga-jessie main" >>/etc/apt/sources.list && \
     echo "deb http://ftp.debian.org/debian jessie-backports main" >>/etc/apt/sources.list && \
-    #apt-get update && \
-    #apt-get install -y icinga2 monitoring-plugins monitoring-plugins-basic monitoring-plugins-common monitoring-plugins-standard && \
+    apt-get update && \
+    apt-get install -y icinga2 monitoring-plugins monitoring-plugins-basic monitoring-plugins-common monitoring-plugins-standard && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY content/ /
