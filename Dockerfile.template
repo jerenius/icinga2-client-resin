@@ -12,11 +12,11 @@ RUN apt-get update && apt-get install -yq wget nano lsb-release && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY content/ /
-
-RUN echo "$MASTER_IP $MASTER_HOST" >>/etc/hosts
-
-
+COPY start.sh /
+RUN chmod +x /start.sh
 
 ENV INITSYSTEM on
 
-CMD "bash"
+RUN echo "$MASTER_IP $MASTER_HOST" >>/etc/hosts
+
+CMD "/start.sh"
