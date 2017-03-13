@@ -17,7 +17,9 @@ chown nagios.nagios /etc/icinga2 -R
 
 rm -rf /etc/icinga2/conf.d/*
 
-sed -i "const NodeName = \"localhost\"/ c const NodeName = \"$CLIENT_HOST\"" /etc/icinga2/constants.conf
+#sed -i "const NodeName = \"localhost\"/ c const NodeName = \"$CLIENT_HOST\"" /etc/icinga2/constants.conf
+sed -i "$ i const NodeName = \"$CLIENT_HOST\"" /etc/icinga2/constants.conf
+
 
 icinga2 pki new-cert --cn $CLIENT_HOST --key $pki_dir/$CLIENT_HOST.key --cert $pki_dir/$CLIENT_HOST.crt
 icinga2 pki save-cert --key $pki_dir/$CLIENT_HOST.key --cert $pki_dir/$CLIENT_HOST.crt --trustedcert $pki_dir/trusted-cert.crt --host $MASTER_HOST
