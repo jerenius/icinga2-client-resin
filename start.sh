@@ -19,7 +19,7 @@ rm -rf /etc/icinga2/conf.d/*
 
 icinga2 pki new-cert --cn $client_host --key $pki_dir/$client_host.key --cert $pki_dir/$client_host.crt
 icinga2 pki save-cert --key $pki_dir/$client_host.key --cert $pki_dir/$client_host.crt --trustedcert $pki_dir/trusted-cert.crt --host $master_host
-icinga2 node setup --ticket $icinga_ticket --zone $client_host --master_host $master_host  --trustedcert  $pki_dir/trusted-cert.crt  --cn $client_host  --endpoint $master_host --accept-commands --accept-config
+icinga2 node setup --ticket $icinga_ticket --zone $client_host --master_host $master_host  --trustedcert  $pki_dir/trusted-cert.crt  --cn $client_host  --endpoint $master_host --accept-commands --accept-config --host $master_ip
 
 
 sed -i '$ i object Zone "global-templates" { global = true }' /etc/icinga2/zones.conf
