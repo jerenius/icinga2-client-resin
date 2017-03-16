@@ -9,17 +9,17 @@ rm -rf /var/lib/apt/lists/*
 
 echo "icinga2 installed, configuring system.."
 
-echo "$MASTER_IP $MASTER_HOST" >>/etc/hosts
-echo "127.0.2.1 $CLIENT_HOST" >>/etc/hosts
+echo "$master_ip $master_host" >>/etc/hosts
+echo "127.0.2.1 $client_host" >>/etc/hosts
 
 
 chown nagios.nagios /etc/icinga2 -R
 
 rm -rf /etc/icinga2/conf.d/*
 
-icinga2 pki new-cert --cn $CLIENT_HOST --key $pki_dir/$CLIENT_HOST.key --cert $pki_dir/$CLIENT_HOST.crt
-icinga2 pki save-cert --key $pki_dir/$CLIENT_HOST.key --cert $pki_dir/$CLIENT_HOST.crt --trustedcert $pki_dir/trusted-cert.crt --host $MASTER_HOST
-icinga2 node setup --ticket $ICINGA_TICKET --zone $CLIENT_HOST --master_host $MASTER_HOST  --trustedcert  $pki_dir/trusted-cert.crt  --cn $CLIENT_HOST  --endpoint $MASTER_HOST --accept-commands --accept-config
+icinga2 pki new-cert --cn $client_host --key $pki_dir/$client_host.key --cert $pki_dir/$client_host.crt
+icinga2 pki save-cert --key $pki_dir/$client_host.key --cert $pki_dir/$client_host.crt --trustedcert $pki_dir/trusted-cert.crt --host $master_host
+icinga2 node setup --ticket $icinga_ticket --zone $client_host --master_host $master_host  --trustedcert  $pki_dir/trusted-cert.crt  --cn $client_host  --endpoint $master_host --accept-commands --accept-config
 
 
 sed -i '$ i object Zone "global-templates" { global = true }' /etc/icinga2/zones.conf
