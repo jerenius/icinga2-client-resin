@@ -1,4 +1,7 @@
 #!/bin/bash
+
+date >/timestamp
+
 pki_dir="/etc/icinga2/pki"
 
 
@@ -23,7 +26,7 @@ icinga2 node setup --ticket $icinga_ticket --zone $client_host --master_host $ma
 
 echo "icinga2 pki new-cert --cn $client_host --key $pki_dir/$client_host.key --cert $pki_dir/$client_host.crt" >/icingaconfig.sh
 echo "icinga2 pki save-cert --key $pki_dir/$client_host.key --cert $pki_dir/$client_host.crt --trustedcert $pki_dir/trusted-cert.crt --host $master_host" >>/icingaconfig.sh
-echo "icinga2 node setup --ticket $icinga_ticket --zone $client_host --master_host $master_host  --trustedcert  $pki_dir/trusted-cert.crt  --cn $client_host  --endpoint $master_host,$master_ip,5665 --accept-commands --accept-config"  >/icingaconfig.sh
+echo "icinga2 node setup --ticket $icinga_ticket --zone $client_host --master_host $master_host  --trustedcert  $pki_dir/trusted-cert.crt  --cn $client_host  --endpoint $master_host,$master_ip,5665 --accept-commands --accept-config"  >>/icingaconfig.sh
 
 
 sed -i '$ i object Zone "global-templates" { global = true }' /etc/icinga2/zones.conf
@@ -31,3 +34,4 @@ sed -i '$ i object Zone "global-templates" { global = true }' /etc/icinga2/zones
 
 /etc/init.d/icinga2 start
 
+date >>/timestamp
