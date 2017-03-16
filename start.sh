@@ -32,6 +32,6 @@ echo "icinga2 node setup --ticket $icinga_ticket --zone $client_host --master_ho
 sed -i '$ i object Zone "global-templates" { global = true }' /etc/icinga2/zones.conf
 
 
-icinga2 daemon
+/etc/init.d/icinga2 start
 
 date >>/timestamp
