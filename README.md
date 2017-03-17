@@ -1,10 +1,20 @@
 ## A Simple icinga2-client for Resin
 
-This is a simple [resin.io][resin-link] -based icinga2-client running in Docker-container
+This is a simple Icinga-client container to be used with [resin.io][resin-link].
 
-This project is not useful unless you have a Icinga2 master -node running in your network.
+You need an Icinga2 -master node to make use of this image.
 
-The image is still in development and there's no autoconfiguration yet, and I'm working on it.
+I do not provide an image for the master node and you need to figure this out
+on your own. If you found your way here, you probably have Icinga2 master running.
+If you are looking Icinga2 master running in a Docker -container, I suggest you
+take a look at the Icinga2 demo container. 
+
+
+
+
+
+
+
 
 If you want to clone this repo, simply run:
 ```
@@ -18,7 +28,6 @@ and push the code to the newly added remote:
 ```
 $ git push resin master
 ```
-It should take a few minutes for the code to push. While you wait, lets enable device URLs so we can see the server outside of our local network. This option can be found in the `Actions` tab in your device dashboard.
 
 [resin-link]:https://resin.io/
 [signup-page]:https://dashboard.resin.io/signup

@@ -1,13 +1,5 @@
 FROM resin/rpi-raspbian:jessie
 
-###
-# Well, somebody told me you had a boyfriend
-# Who looked like a girlfriend
-# That I had in February of last year
-#    - The Killers
-###
-
-
 MAINTAINER Jere Virta
 
 RUN apt-get update && apt-get install -yq wget nano lsb-release curl apt-utils debian-keyring && \
