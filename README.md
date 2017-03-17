@@ -7,7 +7,7 @@ You need an Icinga2 -master node to make use of this image.
 I do not provide an image for the master node and you need to figure this out
 on your own. If you found your way here, you probably have Icinga2 master running.
 If you are looking Icinga2 master running in a Docker -container, I suggest you
-take a look at the Icinga2 demo container. 
+take a look at the [Icinga2 demo container][icinga2-docker]. 
 
 
 
@@ -32,3 +32,5 @@ $ git push resin master
 [resin-link]:https://resin.io/
 [signup-page]:https://dashboard.resin.io/signup
 [gettingStarted-link]:http://docs.resin.io/#/pages/installing/gettingStarted.md
+[icinga2-docker]:https://hub.docker.com/r/icinga/icinga2/
+[jordan-icinga2]:https://hub.docker.com/r/jordan/icinga2/
