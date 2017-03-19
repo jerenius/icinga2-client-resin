@@ -14,7 +14,6 @@ echo "icinga2 installed, configuring system.."
 echo "$master_ip $master_host" >>/etc/hosts
 echo "127.0.2.1 $client_host" >>/etc/hosts
 
-
 chown nagios.nagios /etc/icinga2 -R
 
 rm -rf /etc/icinga2/conf.d/*
