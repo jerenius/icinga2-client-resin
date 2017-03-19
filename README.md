@@ -1,22 +1,24 @@
-## A Simple icinga2-client for Resin
+## A Simple icinga2-client for [resin.io][resin-link]
 
-This is a simple Icinga-client container to be used with [resin.io][resin-link].
+In this repository you find source files for [Icinga2][icinga2-site] -docker image for [resin.io][resin-link].
 
-You need an Icinga2 -master node to make use of this image.
+This image is about the client side of Icinga2. Configuration requires few variables set at the resin -portal.
 
-I do not provide an image for the master node and you need to figure this out
-on your own. If you found your way here, you probably have Icinga2 master running.
-If you are looking Icinga2 master running in a Docker -container, I suggest you
-take a look at the [Icinga2 demo container][icinga2-docker] or Jordan Jethwas [Icinga2 container][jordan-icinga2].
+If you are looking for a docker image for Icinga2 master-node, take a look at [Official Icinga2 container][icinga2-docker] of [@jjethwa's docker image][jordan-icinga2]
 
-There are few steps to get going with this image. 
+## Configuration
 
-1. Create an account in Resin, create one [here][signup-page] and review [gettingStarted-link]:http://docs.resin.io/#/pages/installing/gettingStarted.md
-   I won't be going in detail about Resin
+1. Create a pki ticket for you client at the master node (I'm using satellite01 for the client name)
+```
+$ icinga2 pki ticket --cn satellite01
+```
 
-2. Create an application in Resin (ie. myicinga2) and install ResinOS image to you device of choise (I use Raspberry Pi)
+2. Create satellite01 -configuration at the master node
 
-3. Create variables in Resin application for Icinga2 -client autoconfiguration.
+
+
+
+
 
 Device- level variables
  - client_host
@@ -48,3 +50,4 @@ $ git push resin master
 [gettingStarted-link]:http://docs.resin.io/#/pages/installing/gettingStarted.md
 [icinga2-docker]:https://hub.docker.com/r/icinga/icinga2/
 [jordan-icinga2]:https://hub.docker.com/r/jordan/icinga2/
+[icinga2-site]:[https://www.icinga.com/]
