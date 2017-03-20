@@ -9,7 +9,7 @@ apt-get install -y icinga2 monitoring-plugins monitoring-plugins-basic monitorin
 apt-get clean
 rm -rf /var/lib/apt/lists/*
 
-echo "icinga2 installed, configuring system.."
+echo "Icinga2 installed, configuring system.."
 
 echo "$master_ip $master_host" >>/etc/hosts
 echo "127.0.2.1 $client_host" >>/etc/hosts
