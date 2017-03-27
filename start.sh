@@ -32,8 +32,6 @@ chmod u+s,g+s /bin/ping
 chmod u+s,g+s /bin/ping6 
 chmod u+s,g+s /usr/lib/nagios/plugins/check_icmp
 
-
-
 /etc/init.d/icinga2 start
 
 date >>/timestamp
