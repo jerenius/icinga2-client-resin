@@ -18,8 +18,6 @@ $ icinga2 pki ticket --cn satellite01
 
 
 
-
-
 Device- level variables
  - client_host
  - icinga_ticket
