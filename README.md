@@ -49,6 +49,8 @@ Application- level variables (for multiple devices)
  - master_host
  - master_ip
 
+## That's all folks
+
 That's all configuration you need. Autoconfiguration should do the rest based on these variables.
 
 
