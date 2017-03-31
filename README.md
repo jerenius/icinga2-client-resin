@@ -11,9 +11,9 @@ This image is semi-automatic, but obviously you need to put some configuration i
 You need to manually create an installation ticket for your brand new satellite host. There actually is a way to create the ticket via Icinga2 api, 
 but I did have hard time to get Curl play nice with variables. So for now, creating the ticket manually is quite easy workaround.
 
-## Configuration
+# Configuration
 
-# Master node
+## Master node
 
 1. Create a pki ticket for you client at your Icinga2 master node (I'm using sputnik for the client name)
 ```
@@ -32,12 +32,12 @@ cat <<EOF >/etc/icinga2/conf.d/zones/sputnik.conf
 EOF
 ```
 
-# Client
+## Client
 
 Actually you have no configuration to make on the client side, besides writing you application ResinOS -image to SD-card. 
 
 
-# Resin
+## Resin
 
 You need to se few variables at the resin site.
 
