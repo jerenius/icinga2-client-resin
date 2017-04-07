@@ -15,4 +15,6 @@ ENV INITSYSTEM on
 
 RUN echo "$MASTER_IP $MASTER_HOST" >>/etc/hosts
 
+RUN echo "FOO"
+
 CMD "/start.sh"
