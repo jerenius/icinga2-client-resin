@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian:strech
+FROM resin/rpi-raspbian:stretch
 
 MAINTAINER Jere Virta
 
