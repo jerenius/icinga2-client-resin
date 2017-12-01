@@ -15,6 +15,6 @@ ENV INITSYSTEM on
 
 RUN echo "$MASTER_IP $MASTER_HOST" >>/etc/hosts
 
-RUN echo "FOO"
+RUN echo "Welcome to Icinga2"
 
 CMD "/start.sh"
