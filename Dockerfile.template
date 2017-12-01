@@ -1,11 +1,10 @@
-FROM resin/rpi-raspbian:jessie
+FROM resin/rpi-raspbian:stretch
 
 MAINTAINER Jere Virta
 
 RUN apt-get update && apt-get install -yq wget nano lsb-release curl apt-utils debian-keyring && \
     wget -O - http://packages.icinga.com/icinga.key | apt-key add - && \
-    echo "deb http://debmon.org/debmon debmon-jessie main" >>/etc/apt/sources.list && \
-    #echo "deb http://packages.icinga.com/debian icinga-jessie main" >>/etc/apt/sources.list && \
+    echo "deb http://debmon.org/debmon debmon-stretch main" >>/etc/apt/sources.list && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY content/ /
