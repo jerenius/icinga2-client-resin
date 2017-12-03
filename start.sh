@@ -28,8 +28,10 @@ echo "icinga2 node setup --ticket $icinga_ticket --zone $client_host --master_ho
 
 sed -i '$ i object Zone "global-templates" { global = true }' /etc/icinga2/zones.conf
 
-chmod u+s,g+s /bin/ping 
-chmod u+s,g+s /bin/ping6 
+sed -i '$ i object Zone "director-global" { global = true }' /etc/icinga2/zones.conf
+
+chmod u+s,g+s /bin/ping
+chmod u+s,g+s /bin/ping6
 chmod u+s,g+s /usr/lib/nagios/plugins/check_icmp
 
 /etc/init.d/icinga2 start
